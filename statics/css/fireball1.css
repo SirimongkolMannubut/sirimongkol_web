@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    overflow: hidden;
+}
+
+#fireball {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, orange, red);
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+    transition: transform 0.1s ease-out;
+}
