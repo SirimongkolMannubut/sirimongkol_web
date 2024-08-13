@@ -21,3 +21,15 @@ def forPage(request):
 
 def cardPage(request):
     return render(request, 'card_template.html', {'range': range(100)})
+
+#def cradcolorUs(request):
+   # return render(request, 'crad_colorr.html')
+
+
+
+
+def cradcolorUs(request):
+    if request.method == "GET":
+        color = request.GET.get('color')
+        print(color)
+    return render(request, 'crad_colorr.html')

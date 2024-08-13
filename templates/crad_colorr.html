@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block contant %}
+<div class="container my-5">
+    <div class="row mb-3">
+        <div class="col">
+            <button id="show-all" class="btn btn-secondary">แสดงทั้งหมด</button>
+            <button id="show-primary" class="btn btn-primary">สีน้ำเงิน</button>
+            <button id="show-warning" class="btn btn-warning">สีเหลือง</button>
+            <button id="show-success" class="btn btn-success">สีเขียว</button>
+            <button id="show-info" class="btn btn-info">สีฟ้าอ่อน</button>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-3 card-container" data-color="primary">
+            <div class="card card-custom bg-primary-custom">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 card-container" data-color="warning">
+            <div class="card card-custom bg-warning-custom">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                    <h5 class="card-title">Warning card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 card-container" data-color="success">
+            <div class="card card-custom bg-success-custom">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                    <h5 class="card-title">Success card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 card-container" data-color="info">
+            <div class="card card-custom bg-info-custom">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                    <h5 class="card-title">Information card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom styles for the cards -->
+<style>
+    .card-custom {
+        width: 18rem;
+        margin: 1rem;
+        color: #fff;
+    }
+    .bg-primary-custom {
+        background-color: #007bff;
+    }
+    .bg-warning-custom {
+        background-color: #ffc107;
+    }
+    .bg-success-custom {
+        background-color: #28a745;
+    }
+    .bg-info-custom {
+        background-color: #17a2b8;
+    }
+</style>
+
+<!-- JavaScript for button interactions -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#show-all').click(function(){
+            $('.card-container').show();
+            updateURL();
+        });
+
+        $('#show-primary').click(function(){
+            $('.card-container').hide();
+            $('[data-color="primary"]').show();
+            updateURL('blue');
+        });
+
+        $('#show-warning').click(function(){
+            $('.card-container').hide();
+            $('[data-color="warning"]').show();
+            updateURL('Yellow');
+        });
+
+        $('#show-success').click(function(){
+            $('.card-container').hide();
+            $('[data-color="success"]').show();
+            updateURL('Green');
+        });
+
+        $('#show-info').click(function(){
+            $('.card-container').hide();
+            $('[data-color="info"]').show();
+            updateURL('Light blue');
+        });
+
+        function updateURL(color) {
+            if (color) {
+                history.pushState(null, '', `${window.location.pathname}?color=${color}`);
+            } else {
+                history.pushState(null, '', window.location.pathname);
+            }
+        }
+
+        // ตรวจสอบพารามิเตอร์สีใน URL และแสดงการ์ดที่ตรงกัน
+        function checkURL() {
+            const params = new URLSearchParams(window.location.search);
+            const color = params.get('color');
+            if (color) {
+                $('.card-container').hide();
+                $(`[data-color="${color}"]`).show();
+            } else {
+                $('.card-container').show();
+            }
+        }
+
+        // ตรวจสอบ URL เมื่อเริ่มต้น
+        checkURL();
+    });
+</script>
+{% endblock contant %}
