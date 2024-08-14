@@ -39,8 +39,13 @@ def forpageUs (request):
     email =''
     password = ''
     
+    context = {}
+    
     if request.method =="POST":
         email = request.POST.get('email')
         password = request.POST.get('password')
+    
+    context ['email'] = email
+    context ['password'] = password
         
-    return render (request, 'for_page.html')
+    return render (request, 'for_page.html', context) 

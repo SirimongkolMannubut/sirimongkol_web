@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block contant %}
+
 <div class="container mt-5">
     <form method="post" class="needs-validation" novalidate>
-
+        {% csrf_token %}
         <legend class="mb-4">ฟอร์มสำหรับส่งข้อมูล</legend>
         
         <div class="mb-3">
@@ -26,9 +27,18 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checkbox">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
-
+ {% comment %} ให้มันแสดง email กับ password {% endcomment %}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    {% if email or password %}
+    <div class="mt-4">
+        <h5>Submitted Data</h5>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><strong>Password:</strong> {{ password }}</p>
+        <p><strong>Checkbox:</strong> {% if checkbox %}Checked{% else %}Unchecked{% endif %}</p>
+    </div>
+    {% endif %}
 </div>
 
 <script>
@@ -49,4 +59,5 @@
     })
 })()
 </script>
+
 {% endblock contant %}
