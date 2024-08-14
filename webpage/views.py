@@ -49,3 +49,7 @@ def forpageUs (request):
     context ['password'] = password
         
     return render (request, 'for_page.html', context) 
+
+def games1Us(request):
+    return render(request, 'game1.html')
+

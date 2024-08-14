@@ -8,6 +8,8 @@ urlpatterns =[
     path('for_test/', views.forPage, name="for_test"),
     path("card_template/", views.cardPage, name="card_template" ),
     path("card_colorr/", views.cradcolorUs, name="crad_colorr" ),
-    path("for_page/", views.forpageUs, name="for_page" )
+    path("for_page/", views.forpageUs, name="for_page" ),
+    path("game1/", views.games1Us, name="game1")
+         
     
 ]
