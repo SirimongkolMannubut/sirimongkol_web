@@ -33,3 +33,14 @@ def cradcolorUs(request):
         color = request.GET.get('color')
         print(color)
     return render(request, 'crad_colorr.html')
+
+
+def forpageUs (request):
+    email =''
+    password = ''
+    
+    if request.method =="POST":
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+    return render (request, 'for_page.html')
